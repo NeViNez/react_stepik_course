@@ -1,33 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class App extends Component {
-    constructor() {
-        super();
-        this.state = {
-            count: 0,
-        };
-				this.handleMinus = this.handleMinus.bind(this);
-        this.handlePlus = this.handlePlus.bind(this);
-    }
-
-		handleMinus() {
-			this.setState({ count: this.state.count - 1});
-	};
+export default function App() {
+	const [count, setCount] = React.useState(0);
 
 
-    handlePlus() {
-        this.setState({ count: this.state.count + 1});
-    };
-
-    render() {
-        return (
-            <div className="App">
-                <button onClick={this.handleMinus}>-</button>
-								<span>{this.state.count}</span>
-								<button onClick={this.handlePlus}>+</button>
-            </div>
-        );
-    }
+	return (
+		<div className="App">
+			<button onClick={() => setCount(prevCount => prevCount - 1)}>-</button>
+			<span>{count}</span>
+			<button onClick={() => setCount(prevCount => prevCount + 1)}>+</button>
+		</div>
+	)
 }
-
-export default App;
